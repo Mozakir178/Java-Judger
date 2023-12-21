@@ -1,0 +1,9 @@
+Java Judger Planning:
+
+
+Understand the complete code
+Divide the code into smaller part
+Plan different services
+Divide code into different services
+Need to think about the logic of sending the CSV and Java files
+Need to think about the logic of getting the final.csv
