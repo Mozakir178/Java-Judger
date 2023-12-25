@@ -157,6 +157,7 @@ public class Script{
 		try{
 		p = Runtime.getRuntime().exec(command);
 		PrintWriter stdin = new PrintWriter(p.getOutputStream());
+		stdin.println("cd C:\\testing\\judger");
 		stdin.println("del " + studentCode + localPath + "\\src\\main\\java\\ConvertToJson.java");		
 		stdin.println("del " + studentCode + localPath + "\\src\\test\\java");
 		stdin.println("Y");
