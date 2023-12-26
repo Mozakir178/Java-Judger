@@ -37,6 +37,7 @@ public class GitService {
             PrintWriter stdin = new PrintWriter(p.getOutputStream());
             //trying to go to the respective directory
             stdin.println("cd C:\\testing\\judger");
+//            stdin.println("cd src/main/resources");
             stdin.println("mkdir "+ studentCode);
             stdin.println("git clone "+ gitUrl + " " + studentCode + "> output.txt");
             stdin.println("cd " + studentCode);

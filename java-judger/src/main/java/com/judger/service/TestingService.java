@@ -16,6 +16,7 @@ public class TestingService {
             p = Runtime.getRuntime().exec(command);
             PrintWriter stdin = new PrintWriter(p.getOutputStream());
             stdin.println("cd C:\\testing\\judger");
+//            stdin.println("cd src/main/resources");
             stdin.println("cd "+ studentCode + localPath);
             stdin.println("mvn clean test > output.txt");
 //            stdin.println("mvn clean test surefire-report:report -Dsurefire.useFile=false");
