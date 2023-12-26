@@ -35,8 +35,8 @@ public class Main{
                 continue;
             }
 //			This issue is sorted
-//			System.out.println(Arrays.toString(gitUrlBranchProj));
-
+//			System.out.println(Arrays.toString(gitUrlBranchProj))
+//          getting git urls
             String gitUrl = gitUrlBranchProj[0].replaceFirst("^https:///", "https://");
             String localPath = gitUrlBranchProj[1];
 
