@@ -7,3 +7,10 @@ Plan different services
 Divide code into different services
 Need to think about the logic of sending the CSV and Java files
 Need to think about the logic of getting the final.csv
+
+Execution:
+Was able to understand the flow.
+Have converted the simple file into a spring-boot project.
+Have made the file uploading dynamic.
+Have written the API to test.
+
