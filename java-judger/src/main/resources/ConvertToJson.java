@@ -10,6 +10,9 @@ public class ConvertToJson {
         BufferedReader br = new BufferedReader(new FileReader(filePath + "/output.txt"));
 //        String filePath
         BufferedWriter bw = new BufferedWriter(new FileWriter(new File("C:\\testing\\judger\\final.csv"),true));
+//        char ch = '\' ;
+//        String pa = "C:Users\\mozak\\OneDrive\\Desktop\\Judger\\java-judger\\src\\main\\resource\\final.csv" ;
+//        BufferedWriter bw = new BufferedWriter(new FileWriter(new File(pa),true));
         String currLine;
         JSONObject jsonObject = new JSONObject();
 

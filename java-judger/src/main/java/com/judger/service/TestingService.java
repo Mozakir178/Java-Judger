@@ -1,5 +1,8 @@
 package com.judger.service;
 
+import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.Resource;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.PrintWriter;
@@ -13,10 +16,28 @@ public class TestingService {
         String[] command = {"cmd"};
         Process p;
         try{
+//            p = Runtime.getRuntime().exec(command);
+//            PrintWriter stdin = new PrintWriter(p.getOutputStream());
+//            stdin.println("cd C:\\testing\\judger");
+////            stdin.println("cd src/main/resources");
+//            stdin.println("cd "+ studentCode + localPath);
+//            stdin.println("mvn clean test > output.txt");
+////            stdin.println("mvn clean test surefire-report:report -Dsurefire.useFile=false");
+//            stdin.println("mvn exec:java -D\"exec.mainClass\"=\"ConvertToJson\"");
+//            stdin.close();
+//            p.waitFor(5, TimeUnit.MINUTES);
+
+
+
             p = Runtime.getRuntime().exec(command);
             PrintWriter stdin = new PrintWriter(p.getOutputStream());
-            stdin.println("cd C:\\testing\\judger");
-//            stdin.println("cd src/main/resources");
+            DefaultResourceLoader loader = new DefaultResourceLoader();
+            Resource resource = loader.getResource("classpath:");
+            String path = resource.getFile().getAbsolutePath();
+            char seprater = path.charAt(path.length()-8);
+            path = path.substring(0,path.length()-14);
+            path += "src"+seprater+"main"+seprater+"resources" ;
+            stdin.println("cd "+path);
             stdin.println("cd "+ studentCode + localPath);
             stdin.println("mvn clean test > output.txt");
 //            stdin.println("mvn clean test surefire-report:report -Dsurefire.useFile=false");

@@ -1,5 +1,8 @@
 package com.judger.service;
 
+import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.Resource;
+
 import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
@@ -33,17 +36,35 @@ public class GitService {
         String[] command = {"cmd"};
         Process p;
         try{
+//            p = Runtime.getRuntime().exec(command);
+//            PrintWriter stdin = new PrintWriter(p.getOutputStream());
+//            //trying to go to the respective directory
+//            stdin.println("cd C:\\testing\\judger");
+////            stdin.println("cd src/main/resources");
+//            stdin.println("mkdir "+ studentCode);
+//            stdin.println("git clone "+ gitUrl + " " + studentCode + "> output.txt");
+//            stdin.println("cd " + studentCode);
+//            stdin.println("git restore .");
+//            stdin.close();
+//            p.waitFor(5, TimeUnit.MINUTES);
+
+            DefaultResourceLoader loader = new DefaultResourceLoader();
+            Resource resource = loader.getResource("classpath:");
+            String path = resource.getFile().getAbsolutePath();
+            char seprater = path.charAt(path.length()-8);
+            path = path.substring(0,path.length()-14);
+            path += "src"+seprater+"main"+seprater+"resources" ;
+//            System.out.println(path);
             p = Runtime.getRuntime().exec(command);
             PrintWriter stdin = new PrintWriter(p.getOutputStream());
-            //trying to go to the respective directory
-            stdin.println("cd C:\\testing\\judger");
-//            stdin.println("cd src/main/resources");
+            stdin.println("cd "+path);
             stdin.println("mkdir "+ studentCode);
             stdin.println("git clone "+ gitUrl + " " + studentCode + "> output.txt");
             stdin.println("cd " + studentCode);
             stdin.println("git restore .");
             stdin.close();
             p.waitFor(5, TimeUnit.MINUTES);
+
         }catch(Exception e){
             e.printStackTrace();
         }
